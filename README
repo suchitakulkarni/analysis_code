@@ -1,0 +1,6 @@
+This is a simple code that loops over all files in given directory. For a given file, it loops over all events of that file and gets entry. No histogram is filled. There is a minimal output. 
+
+To run, type make and for runLooper give instructions
+./runLooper ./test_sample BSM_susy ./ 1 1000
+
+The final arguement of runLooper has no meaning to it. The cross section is set to 1. 
