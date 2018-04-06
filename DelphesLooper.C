@@ -50,9 +50,8 @@ int lumi = 300; // in fb
   //gROOT->cd();
 
 // File Loop
-  //cout << "(TFile*)fileIter.Next()  " << (TFile*)fileIter.Next() << endl;
-  //while ( (currentFile = (TFile*)fileIter.Next()) ) { 
-   currentFile = (TFile*)fileIter.Next();
+
+  while ( (currentFile = (TFile*)fileIter.Next()) ) {
    cout << "[DelphesLooper::loop] Now accesses Delphes looper " << endl; 
    cout << "(TFile*)fileIter.Next()  " << (TFile*)fileIter.Next() << endl;
    cout << "[DelphesLooper::loop] starting new file" << endl;
@@ -73,45 +72,13 @@ int lumi = 300; // in fb
 
    for(unsigned int evt = 0; evt < nEventsTree; evt++){  // Real loop over all events
    //for(unsigned int evt = 0; evt < 2500; evt++){  // For Testing
-        //DelphesRecoClass d(tree); // Create an instance of the delphes class and connect it to this tree
-	//cout << "[DelphesLooper::loop] evt number is " << evt << endl;
-        //if (evt%5 !=0) continue;
-        // Get Event Content
-        //cout << "[DelphesLooper::loop] nEventsDone " << nEventsDone << endl;
-        //cout << "[DelphesLooper::loop] nEventsToDo " << nEventsToDo << endl;
-        //if(nEventsDone >= nEventsToDo-1) {cout << "[DelphesLooper::loop] will now continue" << endl; continue;}
-        //if ((evt < 2000) || (evt > 4500) && (evt < 5000)){
-        //if ((evt > 2995) && (evt < 3005)) {
-        if (evt < 3001) {
-        cout << "[DelphesLooper::loop] evt number is " << evt << endl;
-        //DelphesRecoClass d(tree); // Create an instance of the delphes class and connect it to this tree
         d.GetEntry(evt);
-        //d = 0;
- 	}
-	//cout << "[DelphesLooper::loop] got an entry " << endl;
-        //nEventsDone++;
-	//cout << "[DelphesLooper::loop] MET is " << d.MissingET_MET[0] << endl;
-	//MET = d.MissingET_MET[0];    
-        //cout << "[DelphesLooper::loop] MET is " << MET << endl;
-	//cout << "[DelphesLooper::loop] Now fill histo" << endl;
-        //lep1pT->Fill(MET);
    } // end event loop
-   //lep1pT->Fill(MET);
    cout << "will now write the historgram" << endl;
    file->Close();
    delete file;
    cout<<"\nFile done"<<endl;
-   cout << "[DelphesLooper::loop] exits event loop" << endl;
-   //lep1pT->Fill(MET);  
-   cout << "[DelphesLooper::loop] writing histo file" << endl;
-   TFile f("histos.root", "new");
-   cout << "[DelphesLooper::loop]  Writing histograms now " << endl;
-   //lep1pT->Write();
-   //f->Write();
-   cout << "[DelphesLooper::loop] Closing file " << endl;
-   f.Close();
-   cout << "[DelphesLooper::loop] file closed " << endl;
-//} // end file loop
+} // end file loop
 cout << "[DelphesLooper::loop] Now will quit Delphes Looper " << endl;
-//return 0;
+return ;
 }
